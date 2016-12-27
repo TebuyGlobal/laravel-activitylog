@@ -18,6 +18,11 @@ class Activity extends Eloquent
         'properties' => 'collection',
     ];
 
+    public function user()
+    {
+        return $this->hasOne('App\User', 'id', 'causer_id');
+    }
+
     public function subject(): MorphTo
     {
         if (config('laravel-activitylog.subject_returns_soft_deleted_models')) {
